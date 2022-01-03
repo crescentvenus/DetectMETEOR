@@ -1,13 +1,18 @@
 # Usage:
 # python3 recordMETEOR.py
+# 操作Key 
+#    t 録画の開始ON/OFF
+#    d 映像のリアルタイム表示ON/OFF.録画中は表示OFFとした方が、フレームの取りこぼしが少ない。
+#    q プログラムの終了
 
 import cv2
 import time
 import datetime
 import os
 import sys
-
+# ネットワークカメラのアドレスを設定。USBカメラの場合は、適切な番号(ex. 0)を設定。
 cPATH = 'rtsp://xxx:yyy@aaa.bbb.ccc.ddd/live'
+# 録画ファイルを保存するフォルダーのPATHを設定
 PATH = "/home/xxxxx/DATA"
 if cPATH is None:
     print('Camera not selected:', opt)
@@ -29,7 +34,6 @@ def key(k):
         track = not track
     elif k == ord('d'):
         disp = not disp
-
 
 def rename_file(filename, HEAD, detect_counts, f_frame):
     new_name = fname.replace(
